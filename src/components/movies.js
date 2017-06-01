@@ -24,7 +24,7 @@ export default class MoviesSearch extends Component {
                     </a>
                     <div className="info">
                         <a href={"https://www.google.co.uk/search?q=" + item.title }>
-                            <h4>{item.title }</h4>
+                            <h4 className="movieName">{item.title }</h4>
                         </a>
                         <p>Release date : {item.release_date}</p>
                         <p>👍🏻{item.vote_average}</p>

@@ -33,13 +33,17 @@ p{
 a{
   color: black;
 }
-
-
-
-
-.form-control{
-  border-radius: 0;
+.movieName{
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 25px;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 1; /* number of lines to show */
+   -webkit-box-orient: vertical;
 }
+
+
 
 .nav>li{
     position: relative;
