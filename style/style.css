@@ -1,0 +1,63 @@
+
+img{
+  width: 342px;
+  height: 192px;
+}
+body{
+  color:black;
+}
+
+
+.search, .drama,.kids,.rated{
+  padding:30px 0;
+}
+.search{
+  background-color:#389C90;
+}
+
+.drama{
+  background-color: #5D7B25;
+}
+.kids{
+  background-color: #D87832;
+}
+.rated{
+  background-color:#84457D;
+}
+.info{
+  margin-bottom: 30px;
+}
+p{
+  margin-bottom: 0;
+}
+a{
+  color: black;
+}
+
+
+
+
+.form-control{
+  border-radius: 0;
+}
+
+.nav>li{
+    position: relative;
+    display: block;
+    padding: 15px;
+    float: left;
+    cursor: pointer;
+    color:white;
+    text-transform: uppercase;
+}
+.menu{
+  background-color: #3b1836;
+}
+.navbar-default {
+
+    border: none;
+    border-radius: 0;
+  }
+.nav>li:hover{
+  text-decoration: underline;
+}
