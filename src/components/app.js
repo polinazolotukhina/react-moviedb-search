@@ -56,7 +56,6 @@ componentDidMount(){
 
 
  getMovies(key, params, header) {
-   this.setState({ header:header })
    var self = this;
    axios.get('http://api.themoviedb.org/3/discover/movie', {
      params: params
@@ -89,6 +88,8 @@ componentDidMount(){
       });
   }
   searchCinema=()=>{
+      const title = 'In Cinema Now'
+      this.setState({ header: 'In Cinema Now' })
       const dateObj = new Date();
       const  month = dateObj.getUTCMonth() + 1; //months from 1-12
       const  day = dateObj.getUTCDate();
@@ -99,23 +100,27 @@ componentDidMount(){
         'primary_release_date.lte':newdate,
         'primary_release_date.gte': newdate
       }
-      this.getMovies('items', cinemaparams, 'In Cinema Now' )
+      this.getMovies('items', cinemaparams, title )
   }
 
   searchBest=(e)=>{
+      const title = 'Best of the year'
+      this.setState({ header: title })
       const bestparams = {
         api_key: API_KEY,
         'primary_release_year': e.target.attributes.getNamedItem('data-filter').value,
         'sort_by': 'vote_average.desc'
       }
-      this.getMovies('items', bestparams, 'Best of the year'  )
+      this.getMovies('items', bestparams, title  )
   }
   searchPop=()=>{
+      const title = 'Popular'
+      this.setState({ header: title })
       const poparams = {
         api_key: API_KEY,
         sort_by: 'popularity.descs'
       }
-      this.getMovies('items', poparams, 'Popular'   )
+      this.getMovies('items', poparams, title )
   }
 
 
