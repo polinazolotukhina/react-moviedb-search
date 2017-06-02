@@ -45,7 +45,9 @@ a:hover{
    -webkit-line-clamp: 1; /* number of lines to show */
    -webkit-box-orient: vertical;
 }
-
+.form-control{
+  border-radius: 0;
+}
 
 
 .nav>li{

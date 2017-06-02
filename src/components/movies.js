@@ -6,7 +6,7 @@ export default class MoviesSearch extends Component {
     const {movieprop} = this.props;
 
     return (
-      <div className="container">
+      <div className>
         <div className="row">
             {
               movieprop && movieprop.slice(0,6).map((item ) =>

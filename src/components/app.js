@@ -13,7 +13,8 @@ export default class App extends Component {
           kids: [],
           populars: [],
           rated: [],
-          drama:[]
+          drama:[],
+          header: 'Popular'
         }
     }
 componentDidMount(){
@@ -54,7 +55,8 @@ componentDidMount(){
 
 
 
- getMovies(key, params) {
+ getMovies(key, params, header) {
+   this.setState({ header:header })
    var self = this;
    axios.get('http://api.themoviedb.org/3/discover/movie', {
      params: params
@@ -77,7 +79,10 @@ componentDidMount(){
         }
       })
       .then(function (response) {
-          self.setState({items: response.data.results});
+          self.setState({
+            items: response.data.results,
+            header: 'Search result'
+          });
       })
       .catch(function (error) {
         console.log(error);
@@ -94,26 +99,24 @@ componentDidMount(){
         'primary_release_date.lte':newdate,
         'primary_release_date.gte': newdate
       }
-      this.getMovies('items', cinemaparams )
+      this.getMovies('items', cinemaparams, 'In Cinema Now' )
   }
 
   searchBest=(e)=>{
       const bestparams = {
         api_key: API_KEY,
-        'primary_release_year':e.target.attributes.getNamedItem('data-filter').value,
+        'primary_release_year': e.target.attributes.getNamedItem('data-filter').value,
         'sort_by': 'vote_average.desc'
       }
-      this.getMovies('items', bestparams  )
+      this.getMovies('items', bestparams, 'Best of the year'  )
   }
   searchPop=()=>{
       const poparams = {
         api_key: API_KEY,
         sort_by: 'popularity.descs'
       }
-      this.getMovies('items', poparams  )
+      this.getMovies('items', poparams, 'Popular'   )
   }
-
-
 
 
 
@@ -136,23 +139,29 @@ componentDidMount(){
                   </div>
             </nav>
         </div>
-
-
-
           <div className="search">
-            <Movies movieprop={this.state.items}/>
+            <div className="container">
+              <h2>{this.state.header}</h2>
+              <Movies movieprop={this.state.items}/>
+            </div>
           </div>
           <div className="drama">
-          <h2>Drama</h2>
-              <Movies movieprop={this.state.drama}/>
+            <div className="container">
+                <h2>Drama</h2>
+                <Movies movieprop={this.state.drama}/>
+            </div>
           </div>
           <div className="kids">
+            <div className="container">
               <h2>Kids</h2>
               <Movies movieprop={this.state.kids}/>
+            </div>
           </div>
           <div className="rated">
-          <h2>Rated</h2>
+            <div className="container">
+              <h2>Rated</h2>
               <Movies movieprop={this.state.rated}/>
+            </div>
           </div>
       </div>
       </div>
